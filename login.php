@@ -10,14 +10,11 @@ require_once('common/head.php');
 </head>
 
 <body>
-    <?php
-    if ($_GET['form_empty']) {
-        echo '<p class="text-danger">ID,PWを確認してください。</p>';
-    } elseif ($_GET['form_validation']) {
-        echo '<p class="text-danger">IDかPWに間違いがあります。</p>';
-    }
-    ?>
-
+    <?php if ($_GET['form_empty']): ?>
+        <p class="text-danger">ID,PWを確認してください。</p>
+    <?php elseif ($_GET['form_validation']): ?>
+        <p class="text-danger">IDかPWに間違いがあります。</p>
+    <?php endif;?>
     <form name="form1" action="login_act.php" method="post">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">ID</label>

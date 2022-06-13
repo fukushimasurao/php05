@@ -34,7 +34,7 @@ if ($val['id'] != '' && password_verify($lpw, $val['lpw'])) {
     $_SESSION['chk_ssid']  = session_id();
     $_SESSION['kanri_flg'] = $val['kanri_flg'];
     $_SESSION['name']      = $val['name'];
-    header('Location: select.php');
+    header('Location: admin/index.php');
 } else {
     //Login失敗時(Logout経由)
     header('Location: login.php?form_validation=1');
