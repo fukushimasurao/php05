@@ -1,6 +1,5 @@
 <?php
 require_once('common/head.php');
-require_once('common/header_bar.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,7 +10,6 @@ require_once('common/header_bar.php');
 </head>
 
 <body>
-    <?= $header_bar ?>
     <?php
     if ($_GET['form_empty']) {
         echo '<p class="text-danger">ID,PWを確認してください。</p>';
