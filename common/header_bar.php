@@ -8,7 +8,7 @@ $nav_bar = <<<EOM
                 <a class="nav-link active" aria-current="page" href="../admin/post.php">投稿する</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">投稿一覧</a>
+                <a class="nav-link active" aria-current="page" href="../admin/index.php">投稿一覧</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">ログアウト</a>
