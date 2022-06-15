@@ -5,8 +5,9 @@ $title   = $_POST['title'];
 $content  = $_POST['content'];
 $img = '';
 
+
 // imgがある場合
-if (isset($_FILES['img']['name'])) {
+if ($_FILES['img']['name']) {
     $fileName = $_FILES['img']['name'];
     $img = date('YmdHis') . '_' . $_FILES['img']['name'];
 }
@@ -32,10 +33,12 @@ if (count($err) > 0) {
 
 /**
  * (1)$_FILES['img']['tmp_name']... 一時的にアップロードされたファイル
- * (2)'../picture/' . $image...写真を保存したい場所。先に、pictureというフォルダを作成しておく。
+ * (2)'../picture/' . $image...写真を保存したい場所。先にフォルダを作成しておく。
  * (3)move_uploaded_fileで、（１）の写真を（２）に移動させる。
  */
-move_uploaded_file($_FILES['img']['tmp_name'], '../images/' . $img);
+if ($_FILES['img']['name']) {
+    move_uploaded_file($_FILES['img']['tmp_name'], '../images/' . $img);
+}
 
 //2. DB接続します
 $pdo = db_conn();

@@ -36,10 +36,10 @@ if ($status == false) {
                 <!-- <a href="#"> -->
                     <div class="col">
                         <div class="card shadow-sm">
-                        <?php if (!is_null($content['img'])): ?>
+                        <?php if ($content['img']): ?>
                             <img src="../images/<?=$content['img']?>" alt="" class="bd-placeholder-img card-img-top" >
                         <?php else: ?>
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">no image</text></svg>
+                            <img src="../images/default_image/no_image_logo.png" alt="" class="bd-placeholder-img card-img-top" >
                         <?php endif ?>
                         <div class="card-body">
                             <h3><?= $content['title'] ?></h3>
