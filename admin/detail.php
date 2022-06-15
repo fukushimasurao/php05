@@ -33,7 +33,7 @@ if ($status == false) {
     <?php if (isset($_GET['error'])): ?>
         <p class="text-danger">記入内容を確認してください</p>
     <?php endif;?>
-    <form method="POST" action="fix.php" enctype="multipart/form-data">
+    <form method="POST" action="fix.php" enctype="multipart/form-data" class="mb-3">
         <div class="mb-3">
             <label for="title" class="form-label">タイトル</label>
             <input type="text" class="form-control" name="title" id="title" aria-describedby="title" value="<?= $row["title"] ?>">
@@ -47,7 +47,11 @@ if ($status == false) {
             <input type="file" name="img">
             <div id="emailHelp" class="form-text">※画像変更したい場合だけ、画像を選択してください。</div>
         </div>
+        <input type="hidden" name="id" id="id" aria-describedby="id" value="<?= $row["id"] ?>">
         <button type="submit" class="btn btn-primary">修正</button>
+    </form>
+    <form method="POST" action="delete.php?id=<?= $row['id'] ?>" class="mb-3">
+        <button type="submit" class="btn btn-danger">削除</button>
     </form>
 </body>
 

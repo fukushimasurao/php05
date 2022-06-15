@@ -1,20 +1,18 @@
 <?php
 require_once('../funcs.php');
 
-$title   = $_POST['title'];
-$content  = $_POST['content'];
+$id = $_POST['id'];
+$title = $_POST['title'];
+$content = $_POST['content'];
 $img = '';
 
 
-echo '<pre>';
-var_dump('aaa');
-echo '</pre>';
-exit();
 // imgがある場合
-if (isset($_FILES['img']['name'])) {
+if ($_FILES['img']['name']) {
     $fileName = $_FILES['img']['name'];
     $img = date('YmdHis') . '_' . $_FILES['img']['name'];
 }
+
 
 // 簡単なバリデーション処理。
 if (trim($_POST['title']) === '') {
@@ -37,23 +35,43 @@ if (count($err) > 0) {
 
 /**
  * (1)$_FILES['img']['tmp_name']... 一時的にアップロードされたファイル
- * (2)'../picture/' . $image...写真を保存したい場所。先に、pictureというフォルダを作成しておく。
+ * (2)'../picture/' . $image...写真を保存したい場所。先にフォルダを作成しておく。
  * (3)move_uploaded_fileで、（１）の写真を（２）に移動させる。
  */
-move_uploaded_file($_FILES['img']['tmp_name'], '../images/' . $img);
+if ($_FILES['img']['name']) {
+    move_uploaded_file($_FILES['img']['tmp_name'], '../images/' . $img);
+}
+
 
 //2. DB接続します
 $pdo = db_conn();
 
 //３．データ登録SQL作成
-$stmt = $pdo->prepare('INSERT INTO gs_content_table(
-                        title,content,img,date
-                    )VALUES(
-                        :title,:content,:img,sysdate()
-                    )');
-$stmt->bindValue(':title', $title, PDO::PARAM_STR);      //Integer（数値の場合 PDO::PARAM_INT)
-$stmt->bindValue(':content', $content, PDO::PARAM_STR);    //Integer（数値の場合 PDO::PARAM_INT)
-$stmt->bindValue(':img', $img, PDO::PARAM_STR);        //Integer（数値の場合 PDO::PARAM_INT)
+if ($_FILES['img']['name']) {
+    $stmt = $pdo->prepare('UPDATE gs_content_table
+                        SET
+                            title = :title,
+                            content = :content,
+                            img = :img,
+                            update_time = sysdate()
+                        WHERE id = :id;');
+    $stmt->bindValue(':title', $title, PDO::PARAM_STR);
+    $stmt->bindValue(':content', $content, PDO::PARAM_STR);
+    $stmt->bindValue(':img', $img, PDO::PARAM_STR);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+} else {
+    //  画像がない場合imgは省略する。
+    $stmt = $pdo->prepare('UPDATE gs_content_table
+                        SET
+                            title = :title,
+                            content = :content,
+                            update_time = sysdate()
+                        WHERE id = :id;');
+    $stmt->bindValue(':title', $title, PDO::PARAM_STR);
+    $stmt->bindValue(':content', $content, PDO::PARAM_STR);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+}
+
 $status = $stmt->execute(); //実行
 
 //４．データ登録処理後
