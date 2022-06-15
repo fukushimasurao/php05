@@ -1,5 +1,7 @@
 <?php
 require_once('../funcs.php');
+session_start();
+loginCheck();
 
 $pdo = db_conn();
 $id = $_GET['id'];

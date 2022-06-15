@@ -9,7 +9,8 @@ function h($str)
 function loginCheck()
 {
     if (!isset($_SESSION['chk_ssid']) || $_SESSION['chk_ssid'] != session_id()) {
-        exit('Login Error');
+        header('Location: login.php?login_error=1');
+        exit();
     } else {
         session_regenerate_id(true);
         $_SESSION['chk_ssid'] = session_id();

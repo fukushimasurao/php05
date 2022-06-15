@@ -5,13 +5,13 @@ $nav_bar = <<<EOM
         <div class="container-fluid">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../admin/post.php">投稿する</a>
+                <a class="nav-link active" aria-current="page" href="post.php">投稿する</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../admin/index.php">投稿一覧</a>
+                <a class="nav-link active" aria-current="page" href="index.php">投稿一覧</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">ログアウト</a>
+                <a class="nav-link active" aria-current="page" href="logout.php">ログアウト</a>
                 </li>
             </ul>
         </div>

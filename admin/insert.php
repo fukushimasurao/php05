@@ -1,9 +1,12 @@
 <?php
+session_start();
 require_once('../funcs.php');
+loginCheck();
 
 $title   = $_POST['title'];
 $content  = $_POST['content'];
 $img = '';
+
 
 
 // imgがある場合
