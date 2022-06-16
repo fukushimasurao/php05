@@ -3,16 +3,13 @@ session_start();
 require_once('../funcs.php');
 loginCheck();
 
-$title   = $_POST['title'];
+$title = $_POST['title'];
 $content  = $_POST['content'];
-$img = '';
-
-
+$img_name = '';
 
 // imgがある場合
-if ($_FILES['img']['name']) {
-    $fileName = $_FILES['img']['name'];
-    $img = date('YmdHis') . '_' . $_FILES['img']['name'];
+if ($_SESSION['post']['image_data']) {
+    $img_name = date('YmdHis') . '_' . $_SESSION['post']['file_name'];
 }
 
 // 簡単なバリデーション処理。
@@ -22,8 +19,8 @@ if (trim($_POST['title']) === '') {
 if (trim($_POST['content']) === '') {
     $err[] = '内容を確認してください';
 }
-if (!empty($fileName)) {
-    $check =  substr($fileName, -3);
+if (!empty($img_name)) {
+    $check =  substr($img_name, -3);
     if ($check != 'jpg' && $check != 'gif' && $check != 'png') {
         $err[] = '写真の内容を確認してください。';
     }
@@ -39,8 +36,8 @@ if (count($err) > 0) {
  * (2)'../picture/' . $image...写真を保存したい場所。先にフォルダを作成しておく。
  * (3)move_uploaded_fileで、（１）の写真を（２）に移動させる。
  */
-if ($_FILES['img']['name']) {
-    move_uploaded_file($_FILES['img']['tmp_name'], '../images/' . $img);
+if ($_SESSION['post']['image_data']) {
+    file_put_contents('../images/' . $img_name, $_SESSION['post']['image_data']);
 }
 
 //2. DB接続します
@@ -54,12 +51,13 @@ $stmt = $pdo->prepare('INSERT INTO gs_content_table(
                     )');
 $stmt->bindValue(':title', $title, PDO::PARAM_STR);      //Integer（数値の場合 PDO::PARAM_INT)
 $stmt->bindValue(':content', $content, PDO::PARAM_STR);    //Integer（数値の場合 PDO::PARAM_INT)
-$stmt->bindValue(':img', $img, PDO::PARAM_STR);        //Integer（数値の場合 PDO::PARAM_INT)
+$stmt->bindValue(':img', $img_name, PDO::PARAM_STR);        //Integer（数値の場合 PDO::PARAM_INT)
 $status = $stmt->execute(); //実行
 
 //４．データ登録処理後
 if (!$status) {
     sql_error($stmt);
 } else {
+    $_SESSION['post'] = [] ;
     redirect('index.php');
 }
