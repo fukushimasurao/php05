@@ -1,5 +1,5 @@
 <?php
-$nav_bar = <<<EOM
+$header = <<<EOM
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
         <div class="container-fluid">
