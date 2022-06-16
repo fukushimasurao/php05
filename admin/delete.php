@@ -24,9 +24,9 @@ $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 $status = $stmt->execute(); //実行
 
 //４．データ登録処理後
-if (!$status) {
-    sql_error($stmt);
-} else {
-    redirect('index.php');
+if (!$status)
+{
+sql_error($stmt);
+
+}else{redirect('index.php');
 }
-/Applications/MAMP/htdocs/php05/.github/workflows/code_check.yml
