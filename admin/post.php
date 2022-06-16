@@ -52,9 +52,9 @@ if ($_SESSION['post']['image_data']) {
         </nav>
     </header>
     <?php if (isset($_GET['error'])): ?>
-        <p class="text-danger">記入内容を確認してください</p>
-    <?php endif;?>
-    <form method="POST" action="confirm.php" enctype="multipart/form-data">
+    <p class="text-danger">記入内容を確認してください</p>
+    <?php endif; ?>
+    <form method="POST" action="register.php" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="title" class="form-label">タイトル</label>
             <input type="text" class="form-control" name="title" id="title" aria-describedby="title" value="<?= $title ?>">
@@ -65,14 +65,7 @@ if ($_SESSION['post']['image_data']) {
             <textArea type="text" class="form-control" name="content" id="content" aria-describedby="content" rows="4" cols="40"><?= $content ?></textArea>
             <div id="emailHelp" class="form-text">※入力必須</div>
         </div>
-        <?php if ($image_data): ?>
-        <img src="image.php">
-        <?php endif;?>
-        <div class="mb-3">
-            <label for="img" class="form-label">画像投稿</label>
-            <input type="file" name="img">
-        </div>
-        <button type="submit" class="btn btn-primary">確認する</button>
+        <button type="submit" class="btn btn-primary">投稿する</button>
     </form>
 </body>
 </html>

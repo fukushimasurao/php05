@@ -5,29 +5,10 @@ loginCheck();
 
 $title = $_POST['title'];
 $content  = $_POST['content'];
-$img_name = '';
 
-// imgがある場合
-if ($_SESSION['post']['image_data']) {
-    $img_name = date('YmdHis') . '_' . $_SESSION['post']['file_name'];
-}
-
+$error = false;
 // 簡単なバリデーション処理。
-if (trim($_POST['title']) === '') {
-    $err[] = 'タイトルを確認してください。';
-}
-if (trim($_POST['content']) === '') {
-    $err[] = '内容を確認してください';
-}
-if (!empty($img_name)) {
-    $check =  substr($img_name, -3);
-    if ($check != 'jpg' && $check != 'gif' && $check != 'png') {
-        $err[] = '写真の内容を確認してください。';
-    }
-}
-
-// もしerr配列に何か入っている場合はエラーなので、redirect関数でindexに戻す。その際、GETでerrを渡す。
-if (count($err) > 0) {
+if (trim($title) === '' || trim($$content) === '') {
     redirect('post.php?error=1');
 }
 
