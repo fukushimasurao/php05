@@ -19,8 +19,6 @@ if ($_SESSION['post']['content']) {
 if ($_SESSION['post']['image_data']) {
     $image_data = $_SESSION['post']['image_data'];
 }
-
-
 ?>
 
 <!DOCTYPE html>

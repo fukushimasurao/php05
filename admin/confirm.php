@@ -8,7 +8,6 @@ loginCheck();
 // postされたら、セッションの内容も合わせて更新
 $title = $_SESSION['post']['title'] = $_POST['title'];
 $content = $_SESSION['post']['content'] = $_POST['content'];
-$img = '';
 
 // imgがある場合
 if ($_FILES['img']['name']) {

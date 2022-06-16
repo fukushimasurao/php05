@@ -42,6 +42,13 @@ if ($status == false) {
             <label for="content" class="form-label">記事内容</label>
             <textArea type="text" class="form-control" name="content" id="content" aria-describedby="content" rows="4" cols="40"><?= $row["content"] ?></textArea>
         </div>
+
+        <?php if ($row['img']): ?>
+        <div class="mb-3">
+            <img src="<?= '../images/' . $row['img'] ?>" alt="">
+        </div>
+        <?php endif;?>
+
         <div class="mb-3">
             <label for="img" class="form-label">画像投稿</label>
             <input type="file" name="img">
