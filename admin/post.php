@@ -4,7 +4,6 @@ require_once('../funcs.php');
 require_once('../common/header_bar.php');
 require_once('../common/head.php');
 loginCheck();
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">

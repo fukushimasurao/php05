@@ -33,7 +33,6 @@ if ($status == false) {
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <?php foreach ($contents as $content): ?>
-                <!-- <a href="#"> -->
                     <div class="col">
                         <div class="card shadow-sm">
                         <?php if ($content['img']): ?>
@@ -43,7 +42,7 @@ if ($status == false) {
                         <?php endif ?>
                         <div class="card-body">
                             <h3><?= $content['title'] ?></h3>
-                            <p class="card-text"><?= $content['content'] ?></p>
+                            <p class="card-text"><?= nl2br($content['content']) ?></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted">登録日:<?= $content['date'] ?></small>
                             </div>
