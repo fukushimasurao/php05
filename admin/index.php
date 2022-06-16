@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once('../funcs.php');
-require_once('../common/header_bar.php');
 loginCheck();
 
 //２．データ登録SQL作成
