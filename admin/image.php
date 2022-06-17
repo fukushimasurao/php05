@@ -12,3 +12,6 @@ switch ($_SESSION['post']['image_type']) {
     break;
     }
 echo $_SESSION['post']['image_data'];
+
+// phpバージョン8以上の場合は、switch式ではなくmatch式利用を推奨します。
+// https://www.php.net/manual/ja/control-structures.match.php
