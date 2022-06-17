@@ -33,7 +33,7 @@ if ($status == false) {
     <?php if (isset($_GET['error'])): ?>
         <p class="text-danger">記入内容を確認してください</p>
     <?php endif;?>
-    <form method="POST" action="fix.php" enctype="multipart/form-data" class="mb-3">
+    <form method="POST" action="update.php" enctype="multipart/form-data" class="mb-3">
         <div class="mb-3">
             <label for="title" class="form-label">タイトル</label>
             <input type="text" class="form-control" name="title" id="title" aria-describedby="title" value="<?= $row["title"] ?>">
