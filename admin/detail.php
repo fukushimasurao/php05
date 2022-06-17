@@ -18,7 +18,6 @@ if ($status == false) {
     $row = $stmt->fetch();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -55,27 +54,16 @@ if ($status == false) {
     <?php if (isset($_GET['error'])): ?>
         <p class="text-danger">記入内容を確認してください</p>
     <?php endif;?>
-    <form method="POST" action="fix.php" enctype="multipart/form-data" class="mb-3">
+    <form method="POST" action="update.php" class="mb-3">
         <div class="mb-3">
             <label for="title" class="form-label">タイトル</label>
-            <input type="text" class="form-control" name="title" id="title" aria-describedby="title" value="<?= $row["title"] ?>">
+            <input type="text" class="form-control" name="title" id="title" aria-describedby="title">
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">記事内容</label>
-            <textArea type="text" class="form-control" name="content" id="content" aria-describedby="content" rows="4" cols="40"><?= $row["content"] ?></textArea>
+            <textArea type="text" class="form-control" name="content" id="content" aria-describedby="content" rows="4" cols="40"></textArea>
         </div>
 
-        <?php if ($row['img']): ?>
-        <div class="mb-3">
-            <img src="<?= '../images/' . $row['img'] ?>" alt="">
-        </div>
-        <?php endif;?>
-
-        <div class="mb-3">
-            <label for="img" class="form-label">画像投稿</label>
-            <input type="file" name="img">
-            <div id="emailHelp" class="form-text">※画像変更したい場合だけ、画像を選択してください。</div>
-        </div>
         <input type="hidden" name="id" id="id" aria-describedby="id" value="<?= $row["id"] ?>">
         <button type="submit" class="btn btn-primary">修正</button>
     </form>
