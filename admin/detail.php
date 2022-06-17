@@ -57,11 +57,11 @@ if ($status == false) {
     <form method="POST" action="update.php" class="mb-3">
         <div class="mb-3">
             <label for="title" class="form-label">タイトル</label>
-            <input type="text" class="form-control" name="title" id="title" aria-describedby="title">
+            <input type="text" class="form-control" name="title" id="title" aria-describedby="title" value="<?= $row["title"] ?>">
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">記事内容</label>
-            <textArea type="text" class="form-control" name="content" id="content" aria-describedby="content" rows="4" cols="40"></textArea>
+            <textArea type="text" class="form-control" name="content" id="content" aria-describedby="content" rows="4" cols="40"><?= $row["content"] ?></textArea>
         </div>
 
         <input type="hidden" name="id" id="id" aria-describedby="id" value="<?= $row["id"] ?>">
