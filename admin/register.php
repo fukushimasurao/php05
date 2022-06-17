@@ -5,6 +5,7 @@ loginCheck();
 
 $title = $_POST['title'];
 $content  = $_POST['content'];
+$img = '';
 
 // 簡単なバリデーション処理。
 if (trim($title) === '' || trim($content) === '') {
