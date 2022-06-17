@@ -3,18 +3,12 @@ session_start();
 require_once('../funcs.php');
 loginCheck();
 
-// postされたら、セッションに保存
-
-
+// post受け取る
+$title = $_POST['title'];
+$content = $_POST['content'];
 
 // 簡単なバリデーション処理。
-if (trim($title) === '' || trim($content) === '') {
-    $err = true;
-}
 
-if ($err) {
-    redirect('post.php?error=1');
-}
 ?>
 
 <!DOCTYPE html>
@@ -51,9 +45,9 @@ if ($err) {
             </div>
         </nav>
     </header>
-    <?php if (isset($_GET['error'])): ?>
-        <p class="text-danger">記入内容を確認してください</p>
-    <?php endif;?>
+
+    <!-- errorを受け取ったら、エラー文出力。 -->
+
     <form method="POST" action="register.php" enctype="multipart/form-data" class="mb-3">
         <div class="mb-3">
             <label for="title" class="form-label">タイトル</label>
