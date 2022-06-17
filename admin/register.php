@@ -7,10 +7,8 @@ $title = $_POST['title'];
 $content  = $_POST['content'];
 $img = '';
 
-// 簡単なバリデーション処理。
-if (trim($title) === '' || trim($content) === '') {
-    redirect('post.php?error=1');
-}
+// 簡単なバリデーション処理追加。
+
 
 //2. DB接続します
 $pdo = db_conn();
