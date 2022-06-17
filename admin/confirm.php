@@ -9,6 +9,9 @@ $content = $_POST['content'];
 
 // 簡単なバリデーション処理。
 
+
+// imgある場合
+
 ?>
 
 <!DOCTYPE html>
