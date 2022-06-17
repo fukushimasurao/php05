@@ -40,8 +40,7 @@ loginCheck();
 
     <!-- // もしURLパラメータがある場合 -->
 
-
-    <form method="POST" action="resister.php">
+    <form method="POST" action="register.php">
         <div class="mb-3">
             <label for="title" class="form-label">タイトル</label>
             <input type="text" class="form-control" name="title" id="title" aria-describedby="title">
